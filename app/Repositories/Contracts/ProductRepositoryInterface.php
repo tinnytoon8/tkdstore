@@ -11,6 +11,5 @@ interface ProductRepositoryInterface
     public function find($id);
     
     public function getPrice($ticketId);
-
-    public function searchByName(string $keyword);
+    
 }
