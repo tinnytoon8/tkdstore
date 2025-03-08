@@ -12,6 +12,11 @@ class ProductRepository implements ProductRepositoryInterface
         return Product::where('is_popular', true)->take($limit)->get();
     }
 
+    public function searchByName(string $keyword)
+    {
+        return Product::where('name', 'LIKE', '%' . $keyword . '%')->get();
+    }
+
     public function getAllNewProduct()
     {
         return Product::latest()->get();

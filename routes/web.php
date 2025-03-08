@@ -22,3 +22,18 @@ Route::post('/order/payment/confirm', [OrderController::class, 'paymentConfirm']
 
 Route::get('/order/finished/{productTransaction:id}', [OrderController::class, 'orderFinished'])->name('front.order_finished');
 
+Route::get('/clear-session', function () {
+    session()->flush();
+    return "Session berhasil dihapus!";
+});
+
+Route::get('/cek-session', function () {
+    dd(session()->all());
+});
+
+
+Route::get('/cek-order', function () {
+    dd(session('orderData'));
+});
+
+

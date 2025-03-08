@@ -32,8 +32,8 @@ class OrderService
     {
         $orderData = [
             'product_size' => $data['product_size'],
-            'size_id' => 'size_id',
-            'product_id' => 'product_id',
+            'size_id' => $data['size_id'],
+            'product_id' => $data['product_id'],
         ];
 
         $this->orderRepository->saveToSession($orderData);
@@ -54,7 +54,7 @@ class OrderService
 
         $orderData['sub_total_amount'] = $subTotalAmount;
         $orderData['total_tax'] = $totalTax;
-        $orderData['grang_total_amount'] = $grandTotalAmount;
+        $orderData['grand_total_amount'] = $grandTotalAmount;
 
         return compact('orderData', 'product');
     }
