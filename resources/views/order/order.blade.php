@@ -17,6 +17,6 @@
             </div>
             @livewire('order-form', ['product' => $product, 'orderData' => $orderData]);
         </div>
-        <script src="{{ asset('js/booking.js') }}"></script>
+        {{-- <script src="{{ asset('js/booking.js') }}"></script> --}}
     </body>
 </html>
