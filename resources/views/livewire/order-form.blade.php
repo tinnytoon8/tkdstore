@@ -60,6 +60,7 @@
                 <label for="promo" class="font-semibold">Promo Code</label>
                 <div class="flex items-center w-full rounded-full ring-1 ring-[#090917] px-[14px] gap-[10px] overflow-hidden transition-all duration-300 focus-within:ring-2 focus-within:ring-[#FFC700]">
                     <img src="{{asset('assets/images/icons/discount-shape.svg')}}" class="w-6 h-6 flex shrink-0" alt="icon">
+                    {{-- <input type="text" wire:model.debounce.500ms="promoCode" name="promo" id="promo" class="appearance-none outline-none w-full font-semibold placeholder:font-normal placeholder:text-[#878785] py-[14px]" placeholder="Input the promo code"> --}}
                     <input type="text" wire:model="promoCode" wire:blur="updatePromoCode" name="promo" id="promo" class="appearance-none outline-none w-full font-semibold placeholder:font-normal placeholder:text-[#878785] py-[14px]" placeholder="Input the promo code">
                 </div>
                 @if (session()->has('message'))

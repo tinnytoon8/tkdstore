@@ -6,6 +6,7 @@ use App\Http\Requests\StoreCustomerDataRequest;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\StorePaymentRequest;
 use App\Models\Product;
+use App\Models\ProductTransaction;
 use App\Services\OrderService;
 use Illuminate\Http\Request;
 
@@ -39,7 +40,6 @@ class OrderController extends Controller
     public function customerData()
     {
         $data = $this->orderService->getOrderDetails();
-        dd($data);
         return view('order.customer_data', $data);
     }
 
@@ -62,10 +62,16 @@ class OrderController extends Controller
         $validated = $request->validated();
         $productTransactionId = $this->orderService->paymentConfirm($validated);
 
-        if($productTransactionId) {
+        if ($productTransactionId) { // 2312
             return redirect()->route('front.order_finished', $productTransactionId);
         }
 
         return redirect()->route('front.index')->withErrors(['error' => 'Payment failed. Please try again.']);
+    }
+
+
+    public function orderFinished(ProductTransaction $productTransaction)
+    {
+        return view('order.order_finished', compact('productTransaction'));
     }
 }
