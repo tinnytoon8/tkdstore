@@ -51,7 +51,7 @@ class OrderForm extends Component
         $this->subTotalAmount = $this->product->price * $this->quantity;
         $this->grandTotalAmount = $this->subTotalAmount - $this->discount;
     }
-    
+
     public function incrementQuantity()
     {
         if($this->quantity < $this->product->stock) {

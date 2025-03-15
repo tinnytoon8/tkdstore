@@ -39,6 +39,11 @@ class OrderService
         $this->orderRepository->saveToSession($orderData);
     }
 
+    public function getMyOrderDetails(array $validated)
+    {
+        return $this->orderRepository->findByTrxAndPhoneNumber($validated['booking_trx_id'], $validated['phone']);     
+    }
+
     public function getOrderDetails()
     {
         $orderData = $this->orderRepository->getOrderDataFromSession();
@@ -116,6 +121,8 @@ class OrderService
                 $newTransaction = $this->orderRepository->createTransaction($validated);
 
                 $productTransactionId = $newTransaction->id;
+
+                $this->orderRepository->clearSession();
             });
         } catch(\Exception $e) {
             Log::error('Error in payment confirmation: ' . $e->getMessage());

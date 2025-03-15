@@ -15,10 +15,10 @@
                     <img src="{{asset('assets/images/icons/notification.svg')}}" class="w-10 h-10" alt="icon">
                 </a>
             </div>
-            <form class="flex justify-between items-center mx-4">
+            <form action="{{ route('front.search') }}" class="flex justify-between items-center mx-4">
                 <div class="relative flex items-center w-full rounded-l-full px-[14px] gap-[10px] bg-white transition-all duration-300 focus-within:ring-2 focus-within:ring-[#FFC700]">
                     <img src="{{asset('assets/images/icons/search-normal.svg')}}" class="w-6 h-6" alt="icon">
-                    <input type="text" class="w-full py-[14px] appearance-none bg-white outline-none font-semibold placeholder:font-normal placeholder:text-[#878785]" placeholder="Search product...">
+                    <input type="text" name="keyword" class="w-full py-[14px] appearance-none bg-white outline-none font-semibold placeholder:font-normal placeholder:text-[#878785]" placeholder="Search product...">
                 </div>
                 <button type="submit" class="h-full rounded-r-full py-[14px] px-5 bg-[#C5F277]">
                     <span class="font-semibold">Explore</span>
@@ -99,7 +99,7 @@
                 </div>
                 <div class="flex flex-col gap-4">
                     @forelse ($newProduct as $itemNewProduct)
-                        <a href="{{ route('front.details', $itemPopularProduct->slug) }}">
+                        <a href="{{ route('front.details', $itemNewProduct->slug) }}">
                             <div class="flex items-center rounded-3xl p-[10px_16px_16px_10px] gap-[14px] bg-white transition-all duration-300 hover:ring-2 hover:ring-[#FFC700]">
                                 <div class="w-20 h-20 flex shrink-0 rounded-2xl bg-[#D9D9D9] overflow-hidden">
                                     <img src="{{ Storage::url($itemNewProduct->thumbnail) }}" class="w-full h-full object-cover" alt="thumbnail">
@@ -137,7 +137,7 @@
                                 <span class="font-bold text-sm leading-[21px]">Browse</span>
                             </div>
                         </a>
-                        <a href="check-booking.html" class="mx-auto w-full">
+                        <a href="{{ route('front.check_booking') }}" class="mx-auto w-full">
                             <img src="{{asset('assets/images/icons/bag-2-white.svg')}}" class="w-6 h-6" alt="icon">
                         </a>
                         <a href="#" class="mx-auto w-full">

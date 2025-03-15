@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCheckBookingRequest;
 use App\Http\Requests\StoreCustomerDataRequest;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\StorePaymentRequest;
@@ -17,6 +18,12 @@ class OrderController extends Controller
     public function __construct(OrderService $orderService)
     {
         $this->orderService = $orderService;
+    }
+
+    public function details($product)
+    {
+        $product = Product::where('slug', $product)->firstOrFail();
+        return view('front.details', compact('product'));
     }
 
     public function saveOrder(StoreOrderRequest $request, Product $product)
@@ -73,5 +80,23 @@ class OrderController extends Controller
     public function orderFinished(ProductTransaction $productTransaction)
     {
         return view('order.order_finished', compact('productTransaction'));
+    }
+
+    public function checkBooking()
+    {
+        return view('order.my_order');
+    }
+
+    public function checkBookingDetails(StoreCheckBookingRequest $request)
+    {
+        $validated = $request->validated();
+
+        $orderDetails = $this->orderService->getMyOrderDetails($validated);
+
+        if($orderDetails) {
+            return view('order.my_order_details', compact('orderDetails'));
+        }
+
+        return redirect()->route('front.index')->withErrors(['error' => 'Transaction not found']);
     }
 }

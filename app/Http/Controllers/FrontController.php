@@ -16,6 +16,32 @@ class FrontController extends Controller
         $this->frontService = $frontService;
     }
 
+    // public function search(Request $request)
+    // {
+    //     $keyword = $request->input('keyword');
+
+    //     $products = $this->frontService->searchProducts($keyword);
+
+    //     return view('front.search', [
+    //         'products' => $products,
+    //         'keyword' => $keyword,
+    //     ]);
+    // }
+
+    public function search(Request $request)
+{
+    $keyword = $request->input('keyword', ''); // Default ke string kosong jika null
+
+    $products = $this->frontService->searchProducts($keyword);
+    // dd($products);
+
+    return view('front.search', [
+        'products' => $products,
+        'keyword' => $keyword,
+    ]);
+}
+
+
     public function index()
     {
         $data = $this->frontService->getFrontPageData();

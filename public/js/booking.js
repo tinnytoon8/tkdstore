@@ -1,5 +1,5 @@
-const defaultPrice = 18500000;
-const discount = 900000;
+const defaultPrice = 0;
+const discount = 0;
 const quantityDisplay = document.getElementById("quantity-display");
 const quantityInput = document.getElementById("quantity");
 // const totalPriceDisplay = document.getElementById("total-price");

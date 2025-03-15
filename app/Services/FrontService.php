@@ -17,7 +17,7 @@ class FrontService
         $this->productRepository = $productRepository;
     }
 
-    public function searchProduct(string $keyword)
+    public function searchProducts(string $keyword)
     {
         return $this->productRepository->searchByName($keyword);
     }

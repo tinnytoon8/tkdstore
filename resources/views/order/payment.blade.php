@@ -10,7 +10,7 @@
         <form method="POST" enctype="multipart/form-data" action="{{ route('front.payment_confirm') }}" class="relative flex flex-col w-full max-w-[640px] min-h-screen gap-5 mx-auto bg-[#F5F5F0]">
             @csrf
             <div id="top-bar" class="flex justify-between items-center px-4 mt-[60px]">
-                <a href="customer-data.html">
+                <a href="{{ route('front.customer_data') }}">
                     <img src="{{asset('assets/images/icons/back.svg')}}" class="w-10 h-10" alt="icon">
                 </a>
                 <p class="font-bold text-lg leading-[27px]">Review & Payment</p>
@@ -104,7 +104,7 @@
                     <p class="font-bold text-[#FF1943]">- Rp {{ number_format($orderData['total_discount_amount'], 0, ',', '.') }}</p>
                 </div>
                 <div class="flex items-center justify-between">
-                    <p class="font-semibold">PPN 11%</p>
+                    <p class="font-semibold">PPN 1%</p>
                     <p class="font-bold">Rp {{ number_format($orderData['total_tax'], 0, ',', '.') }}</p>
                 </div>
                 <div class="flex items-center justify-between">
@@ -114,7 +114,7 @@
                 <div class="flex items-center justify-between">
                     <p class="font-semibold">Grand Total</p>
                     <p class="font-bold text-2xl leading-9 text-[#07B704]">
-                        {{ number_format($orderData['grand_total_amount'], 0, ',', '.') }}
+                        Rp {{ number_format($orderData['grand_total_amount'], 0, ',', '.') }}
                     </p>
                 </div>
             </section>
